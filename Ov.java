@@ -1,29 +1,30 @@
-package oop1;
+package oop1.oop1;
 
 import java.util.Scanner;
 
 public class Ov
 {
-
     public static void main(String[] args)
     {
 	Scanner input = new Scanner(System.in);
-	Ovactions Account = new Ovactions();
-	System.out.println("momenteel is dit je saldo: $" + Account.opladen());
+	Ovactions account = new Ovactions();
 
-	System.out.println("wil je inchecken");
-	Account.inchecken = input.nextLine();
-	System.out.println(Account.incheckPaal());
-	if (Account.ingecheckt.equals("Ingecheckt"))
-)
+	account.opladen(input);
+	System.out.println("Momenteel is dit je saldo: €" + account.saldo);
+
+	System.out.println("Wil je inchecken?");
+	account.inchecken = input.next();
+	System.out.println(account.incheckPaal(input));
+
+	if (account.ingecheckt.equals("Ingecheckt"))
 	{
-	    System.out.println(Account.overstappen());
-	    
+	    System.out.println(account.overstappen(input));
 	}
-	else {
-	    System.out.println("fijne dag nog");
+	else
+	{
+	    System.out.println("Fijne dag nog!");
 	}
+
 	input.close();
     }
-
 }

@@ -1,80 +1,68 @@
-package oop1;
+package oop1.oop1;
 
 import java.util.Scanner;
 
 public class Ovactions
 {
-    public double kaartBalance;
-
+    public double saldo;
     public String inchecken;
     public String ingecheckt;
     public String uitcheck;
     public String uitcheckmoment;
-    public double saldo;
-    
 
-    public String incheckPaal()
+    public String incheckPaal(Scanner input)
     {
 	boolean accept = false;
 	if (inchecken.equalsIgnoreCase("yes") || inchecken.equalsIgnoreCase("ja") || inchecken.equalsIgnoreCase("yahoo") || inchecken.equalsIgnoreCase("misschien :)"))
 	{
 	    accept = true;
 	}
-	if (accept == true && kaartBalance <= 20)
+
+	if (accept && saldo >= 20)
 	{
 	    ingecheckt = "Ingecheckt";
-
 	}
-	else if (accept == true && kaartBalance >= 20)
+	else if (accept && saldo < 20)
 	{
-	    ingecheckt = "Sorry geen balance:(";
+	    ingecheckt = "Sorry, geen voldoende saldo :(";
 	}
 	else
 	{
-	    ingecheckt = "doei:(";
+	    ingecheckt = "Niet ingecheckt. Doei :(";
 	}
+
 	return ingecheckt;
     }
 
-    public String overstappen()
+    public String overstappen(Scanner input)
     {
-	Scanner input = new Scanner(System.in);
-
-	boolean overstap = false;
-	while (overstap == false)
+	while (true)
 	{
-	    System.out.println("welkom bij de volgende stop, wil je hier uitstappen? Elke stop kost 1 euro");
+	    System.out.println("Welkom bij de volgende stop, wil je hier uitstappen? Elke stop kost 1 euro");
 	    uitcheckmoment = input.next();
 	    if (uitcheckmoment.equalsIgnoreCase("nee"))
 	    {
-		System.out.println("okey is goed");
-		saldo = saldo - 1;
+		System.out.println("Okey is goed");
+		saldo -= 1;
 	    }
 	    else
 	    {
-		uitcheck = "uitgecheckt, saldo is nog : $" + saldo + ". fijna dag nog";
+		uitcheck = "Uitgecheckt, saldo is nog: €" + saldo + ". Fijne dag nog!";
 		break;
 	    }
 	}
-	input.close();
 	return uitcheck;
-
     }
 
-    public Double opladen()
+    public void opladen(Scanner input)
     {
-	Scanner input = new Scanner(System.in);
-	double oplaad;
 	String keuze;
-	System.out.println("wil je saldo opladen?");
+	System.out.println("Wil je saldo opladen?");
 	keuze = input.next();
 	if (keuze.equalsIgnoreCase("ja"))
 	{
-	    System.out.println("hoeveel wil je, je saldo opladen?");
-	    saldo = saldo += (oplaad = input.nextDouble());
+	    System.out.println("Hoeveel wil je je saldo opladen?");
+	    saldo += input.nextDouble();
 	}
-	input.close();
-	return saldo;
-	
     }
 }
